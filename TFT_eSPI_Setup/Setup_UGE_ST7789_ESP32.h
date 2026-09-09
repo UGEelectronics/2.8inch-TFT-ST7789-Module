@@ -2,8 +2,9 @@
 // Setup_UGE_ST7789_ESP32.h
 // UGE Electronics — 2.8" TFT 240x320 ST7789 (SPI), 7-pin module
 //
-// Pins: GND, 3.3V, CS, RST, SCK, MOSI, D/C
+// Pins (silk): GND, 3V3, CS, RST, SCK, MOSI, D/C
 // Backlight is hardwired to 3.3V on the PCB (no BLK pin / no software control).
+// Shop: https://uge-one.com/product/st7789-2-8-inch-spi-lcd-tft-320x240-module-3-3v/
 //
 // Install:
 //   1. Copy this file to:

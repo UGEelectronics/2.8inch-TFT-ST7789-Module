@@ -11,12 +11,12 @@ Library install, ESP32 wiring, TFT_eSPI setup, and the colour test.
 
 **Do not** use 5 V on the logic or power pins.
 
-### Module pins
+### Module pins (silk)
 
 | Pin | Meaning |
 |-----|---------|
 | GND | Ground |
-| 3.3V | Power |
+| 3V3 | Power (3.3 V) |
 | CS | Chip select |
 | RST | Reset |
 | SCK | SPI clock |
@@ -95,7 +95,7 @@ To use other GPIOs, edit **only** `Setup_UGE_ST7789_ESP32.h`.
 | Module | ESP32 |
 |--------|--------|
 | GND | GND |
-| 3.3V | 3.3 V |
+| 3V3 | 3.3 V |
 | CS | 2 |
 | RST | 13 |
 | SCK | 18 |
@@ -157,4 +157,5 @@ Edit `Setup_UGE_ST7789_ESP32.h`, save, recompile and upload. Sketches do not nee
 
 ---
 
-[GitHub — UGEelectronics/2.8inch-TFT-ST7789-Module](https://github.com/UGEelectronics/2.8inch-TFT-ST7789-Module)
+[GitHub — UGEelectronics/2.8inch-TFT-ST7789-Module](https://github.com/UGEelectronics/2.8inch-TFT-ST7789-Module)  
+[Buy this module](https://uge-one.com/product/st7789-2-8-inch-spi-lcd-tft-320x240-module-3-3v/)

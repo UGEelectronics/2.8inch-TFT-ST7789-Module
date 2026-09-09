@@ -1,37 +1,49 @@
 # 2.8″ TFT LCD Module (ST7789) — 240×320
 
-![UGE 2.8" ST7789 TFT module](images/module.jpg)
-
-> Photo is a **placeholder**; final product images will be updated later.
+<p align="center">
+  <img src="images/module-front.jpeg" alt="UGE 2.8 inch ST7789 TFT — front view" width="420">
+</p>
 
 SPI colour display module for Arduino / ESP32 and similar boards.  
-**Controller:** ST7789 · **Resolution:** 240 × 320 RGB · **Interface:** 4-wire SPI
+**Controller:** ST7789 · **Resolution:** 240 × 320 (320×240) · **Interface:** 4-wire SPI · **7 pins**
+
+**Buy:** [uge-one.com — ST7789 2.8″ SPI LCD TFT module](https://uge-one.com/product/st7789-2-8-inch-spi-lcd-tft-320x240-module-3-3v/)
 
 Repository: [UGEelectronics/2.8inch-TFT-ST7789-Module](https://github.com/UGEelectronics/2.8inch-TFT-ST7789-Module)
 
 ---
 
+## Product photos
+
+| Front | With ESP32 demo | Pin labels |
+|-------|-----------------|------------|
+| ![Front](images/module-front.jpeg) | ![Demo](images/module-angle.jpeg) | ![Pins](images/module-pins.jpeg) |
+
+---
+
 ## Product description
 
-Compact **2.8-inch TFT** panel on a breakout PCB with a **7-pin** header. Intended for DIY electronics, IoT dashboards, meters, and handheld UIs.
+Compact **2.8-inch TFT** panel on a blue breakout PCB with a **7-pin** header. Silk text on the board: **2.8" 320×240 TFT**. Intended for DIY electronics, IoT dashboards, meters, and handheld UIs.
 
 | Item | Specification |
 |------|----------------|
 | Size | 2.8 inch diagonal |
-| Resolution | **240 × 320** pixels |
+| Resolution | **240 × 320** pixels (portrait) / 320 × 240 landscape |
 | Colour | RGB, 16-bit (RGB565) |
 | Driver IC | **ST7789** |
-| Bus | SPI (SCK, MOSI) + CS + DC + RST |
-| Logic / supply | **3.3 V** |
+| Bus | SPI (SCK, MOSI) + CS + D/C + RST |
+| Logic / supply | **3.3 V** (`3V3` pin) |
 | Pins | **7** — see table below |
 | Backlight | **Fixed on** — tied to 3.3 V on the PCB through a small resistor. The user **cannot** control backlight brightness or turn it off from a GPIO. |
 
-### Header pinout (7 pins)
+### Header pinout (silk labels)
 
-| Label | Function |
-|--------|----------|
+Left → right on the connector:
+
+| Silk | Function |
+|------|----------|
 | **GND** | Ground |
-| **3.3V** | Power (3.3 V only) |
+| **3V3** | Power (3.3 V only) |
 | **CS** | SPI chip select |
 | **RST** | Reset |
 | **SCK** | SPI clock |
@@ -55,7 +67,7 @@ There is **no backlight control pin** and **no MISO** pin on this product.
 | Module pin | ESP32 GPIO |
 |------------|------------|
 | GND | GND |
-| 3.3V | **3.3 V** |
+| 3V3 | **3.3 V** |
 | CS | **2** |
 | RST | **13** |
 | SCK | **18** |
@@ -73,7 +85,7 @@ These GPIOs match `TFT_eSPI_Setup/Setup_UGE_ST7789_ESP32.h`.
 | [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md) | Full install, wiring, troubleshooting |
 | [`TFT_eSPI_Setup/Setup_UGE_ST7789_ESP32.h`](TFT_eSPI_Setup/Setup_UGE_ST7789_ESP32.h) | Pin/driver file for TFT_eSPI |
 | [`examples/ColorTest/`](examples/ColorTest/) | RGB colour test sketch |
-| [`images/module.jpg`](images/module.jpg) | Placeholder product photo |
+| [`images/`](images/) | Product photos |
 
 ---
 
@@ -90,6 +102,11 @@ One library setup means:
 Details: [docs/USER_GUIDE.md](docs/USER_GUIDE.md)
 
 ---
+
+## Links
+
+- **Shop:** [ST7789 2.8″ SPI LCD TFT 320×240 (3.3 V)](https://uge-one.com/product/st7789-2-8-inch-spi-lcd-tft-320x240-module-3-3v/)
+- **GitHub:** [UGEelectronics/2.8inch-TFT-ST7789-Module](https://github.com/UGEelectronics/2.8inch-TFT-ST7789-Module)
 
 ## Licence
 
