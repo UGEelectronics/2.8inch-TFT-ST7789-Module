@@ -173,8 +173,9 @@ void setup()
   pinMode(BTN_PIN, INPUT_PULLUP);
 
   Serial.println();
-  Serial.println("UGE 2.8\" ST7789 ColorTest");
+  Serial.println("UGE 2.8\" ST7789 ColorTest (7-pin)");
   Serial.println("Setup: Setup_UGE_ST7789_ESP32.h via User_Setup_Select.h");
+  Serial.println("Wire: CS=2 DC=12 RST=13 MOSI=23 SCK=18 | BL hardwired");
 
   tft.init();
   tft.setRotation(0);

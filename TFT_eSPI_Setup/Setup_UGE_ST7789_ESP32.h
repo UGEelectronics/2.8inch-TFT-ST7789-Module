@@ -1,15 +1,15 @@
 //******************************************************************************
 // Setup_UGE_ST7789_ESP32.h
-// UGE Electronics — 2.8" TFT 240x320 ST7789 (SPI)
+// UGE Electronics — 2.8" TFT 240x320 ST7789 (SPI), 7-pin module
+//
+// Pins: GND, 3.3V, CS, RST, SCK, MOSI, D/C
+// Backlight is hardwired to 3.3V on the PCB (no BLK pin / no software control).
 //
 // Install:
 //   1. Copy this file to:
 //        Documents/Arduino/libraries/TFT_eSPI/User_Setups/
 //   2. In User_Setup_Select.h comment out other setups and add:
 //        #include <User_Setups/Setup_UGE_ST7789_ESP32.h>
-//
-// Module header (silk): GND VCC CLK MOSI RES DC BLK MISO
-// CS is not exposed — keep TFT_CS as -1.
 //******************************************************************************
 
 #define USER_SETUP_ID 7789
@@ -19,7 +19,6 @@
 #define TFT_WIDTH  240
 #define TFT_HEIGHT 320
 
-// Colour — confirmed for this module; change only if ColorTest fails
 #define TFT_RGB_ORDER TFT_RGB
 //#define TFT_RGB_ORDER TFT_BGR
 
@@ -27,16 +26,14 @@
 #define TFT_INVERSION_OFF
 
 // ---- ESP32 recommended wiring (edit if you use other GPIOs) ----
-#define TFT_MISO -1     // optional; module MISO often unused
+#define TFT_MISO -1     // MISO not on this module
 #define TFT_MOSI 23
 #define TFT_SCLK 18
-#define TFT_CS   -1     // no CS pin on this module
+#define TFT_CS    2
 #define TFT_DC   12
 #define TFT_RST  13
 
-// Optional: drive backlight from a GPIO instead of tying BLK to 3.3V
-// #define TFT_BL   15
-// #define TFT_BACKLIGHT_ON HIGH
+// No TFT_BL — backlight is permanently powered on the module
 
 #define LOAD_GLCD
 #define LOAD_FONT2

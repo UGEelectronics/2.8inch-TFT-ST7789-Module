@@ -2,6 +2,8 @@
 
 ![UGE 2.8" ST7789 TFT module](images/module.jpg)
 
+> Photo is a **placeholder**; final product images will be updated later.
+
 SPI colour display module for Arduino / ESP32 and similar boards.  
 **Controller:** ST7789 · **Resolution:** 240 × 320 RGB · **Interface:** 4-wire SPI
 
@@ -11,7 +13,7 @@ Repository: [UGEelectronics/2.8inch-TFT-ST7789-Module](https://github.com/UGEele
 
 ## Product description
 
-This is a compact **2.8-inch TFT** panel on a blue breakout PCB with an 8-pin header. It is intended for DIY electronics, IoT dashboards, meters, and handheld UIs.
+Compact **2.8-inch TFT** panel on a breakout PCB with a **7-pin** header. Intended for DIY electronics, IoT dashboards, meters, and handheld UIs.
 
 | Item | Specification |
 |------|----------------|
@@ -19,27 +21,24 @@ This is a compact **2.8-inch TFT** panel on a blue breakout PCB with an 8-pin he
 | Resolution | **240 × 320** pixels |
 | Colour | RGB, 16-bit (RGB565) |
 | Driver IC | **ST7789** |
-| Bus | SPI (CLK, MOSI; MISO optional) |
-| Logic / supply | **3.3 V** (do not use 5 V logic without a level shifter) |
-| Backlight | `BLK` pin (tie to 3.3 V for always-on, or drive from a GPIO) |
-| Chip select | **Not brought out** — CS is hard-wired on the PCB (always selected) |
+| Bus | SPI (SCK, MOSI) + CS + DC + RST |
+| Logic / supply | **3.3 V** |
+| Pins | **7** — see table below |
+| Backlight | **Fixed on** — tied to 3.3 V on the PCB through a small resistor. The user **cannot** control backlight brightness or turn it off from a GPIO. |
 
-### Header pinout (silk screen)
+### Header pinout (7 pins)
 
-Pins from the top of the header (next to the glass corner) downward:
+| Label | Function |
+|--------|----------|
+| **GND** | Ground |
+| **3.3V** | Power (3.3 V only) |
+| **CS** | SPI chip select |
+| **RST** | Reset |
+| **SCK** | SPI clock |
+| **MOSI** | SPI data (MCU → LCD) |
+| **D/C** | Data / Command |
 
-| # | Label | Function |
-|---|--------|----------|
-| 1 | **GND** | Ground |
-| 2 | **VCC** | 3.3 V power |
-| 3 | **CLK** | SPI clock (SCK) |
-| 4 | **MOSI** | SPI data (MCU → LCD) |
-| 5 | **RES** | Reset |
-| 6 | **DC** | Data / Command |
-| 7 | **BLK** | Backlight enable |
-| 8 | **MISO** | SPI data (LCD → MCU) — optional; leave unconnected for write-only use |
-
-> There is **no CS pin** on this module. In TFT_eSPI set `#define TFT_CS -1`.
+There is **no backlight control pin** and **no MISO** pin on this product.
 
 ---
 
@@ -47,22 +46,21 @@ Pins from the top of the header (next to the glass corner) downward:
 
 1. Install **Arduino IDE** and the **ESP32** board package (Espressif).
 2. Library Manager → install **TFT_eSPI** by Bodmer.
-3. Copy this repo’s setup file into the library setups folder (see [User guide](docs/USER_GUIDE.md)).
+3. Copy this repo’s setup file into the library (see [User guide](docs/USER_GUIDE.md)).
 4. Select that setup in `User_Setup_Select.h`.
-5. Wire the module (table below), open `examples/ColorTest`, and Upload.
+5. Wire the module, open `examples/ColorTest`, Upload.
 
 ### Recommended ESP32 wiring
 
 | Module pin | ESP32 GPIO |
 |------------|------------|
 | GND | GND |
-| VCC | **3.3 V** |
-| CLK | **18** |
+| 3.3V | **3.3 V** |
+| CS | **2** |
+| RST | **13** |
+| SCK | **18** |
 | MOSI | **23** |
-| RES | **13** |
-| DC | **12** |
-| BLK | **3.3 V** (or any free GPIO) |
-| MISO | leave open (or **19** if you need reads) |
+| D/C | **12** |
 
 These GPIOs match `TFT_eSPI_Setup/Setup_UGE_ST7789_ESP32.h`.
 
@@ -75,22 +73,21 @@ These GPIOs match `TFT_eSPI_Setup/Setup_UGE_ST7789_ESP32.h`.
 | [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md) | Full install, wiring, troubleshooting |
 | [`TFT_eSPI_Setup/Setup_UGE_ST7789_ESP32.h`](TFT_eSPI_Setup/Setup_UGE_ST7789_ESP32.h) | Pin/driver file for TFT_eSPI |
 | [`examples/ColorTest/`](examples/ColorTest/) | RGB colour test sketch |
-| [`images/module.jpg`](images/module.jpg) | Product photo |
+| [`images/module.jpg`](images/module.jpg) | Placeholder product photo |
 
 ---
 
 ## Why configure `User_Setup_Select.h`?
 
-TFT_eSPI’s **built-in examples** (graphs, fonts, sprites, …) only include `<TFT_eSPI.h>`.  
-They read pins from the library setup — **not** from a sketch-local header.
+TFT_eSPI’s **built-in examples** only include `<TFT_eSPI.h>`. They read pins from the library setup.
 
-Configuring **one** setup file in the library means:
+One library setup means:
 
-- Your product colour test works
+- The colour test works
 - Every TFT_eSPI example works with the same wiring
-- The user’s own sketches need only `#include <TFT_eSPI.h>`
+- Your own sketches need only `#include <TFT_eSPI.h>`
 
-Step-by-step: [docs/USER_GUIDE.md](docs/USER_GUIDE.md)
+Details: [docs/USER_GUIDE.md](docs/USER_GUIDE.md)
 
 ---
 
